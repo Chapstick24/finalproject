@@ -8,6 +8,9 @@ const BASEURL = "";
 export default {
   getMovieTitle: function(searchValue) {
     return axios.get(`https://api.watchmode.com/v1/search/?apiKey=${apikey}&search_field=name&search_value=${searchValue}`)
+  },
+  getSavedWatchlist: function() {
+    return axios.get("/api/movies/watchlist")
   }
 }
 
