@@ -9,13 +9,16 @@ class Search extends Component {
     state = {
         search: "",
         title: [],
+        info: [],
         results: []
     };
 
     componentDidMount() {
-        API.getMovieTitle()
-        .then(res => this.setState({title: res.data}))
-        .catch (err => console.log(err))
+        console.log( API.getMovieTitle())
+        // API.getMovieTitle()
+        // .then(res => this.setState({title: res.data}))
+        // // .then(()=> console.log(this.state))
+        // .catch (err => console.log(err))
     }
     handleInputChange = event => {
         this.setState({ search: event.target.value });
@@ -30,6 +33,13 @@ class Search extends Component {
             }
             console.log(res)
             this.setState({ results: res.data.title_results, error: "" });
+            console.log(this.state.results)
+            API.getShowInfo(this.state.results[0].id)
+            .then(res => {
+                console.log(res)
+                this.setState({info: res.data})
+                console.log(this.state.info)
+            })
           })
           .catch(err => this.setState({ error: err.message }));
       };
@@ -43,7 +53,7 @@ class Search extends Component {
                 handleInputChange={this.handleInputChange}
                 titles={this.state.titles}
               />
-              <SearchResults results={this.state.results} />
+              <SearchResults results={this.state.info} />
             </Container>
           </div>
         );
