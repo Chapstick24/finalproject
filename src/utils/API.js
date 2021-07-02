@@ -3,7 +3,7 @@ import axios from "axios";
 //Watchmode API key 
 
 const apikey ="HvQeYWF8egyTqO4MLNzG4SUy7NPg0om3WPMGUXTt"
-const BASEURL = "";
+//const BASEURL = "";
 
 export default {
   getMovieTitle: function(searchValue) {
@@ -14,8 +14,12 @@ export default {
   },
   getShowInfo: function(showID) {
     return axios.get(`https://api.watchmode.com/v1/title/${showID}/seasons/?apiKey=${apikey}`)
-  }
-}
+  },
+
+  saveUser: function(userData) {
+    return axios.post('/api/users', userData);
+  },
+};
 
 
 
