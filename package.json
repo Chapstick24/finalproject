@@ -10,6 +10,7 @@
     "bootstrap": "^5.0.2",
     "moment": "^2.29.1",
     "mongodb": "^3.6.9",
+    "mongoose": "^5.12.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-moment": "^1.1.1",
@@ -22,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "seed": "node src/seed/index.js"
   },
   "eslintConfig": {
     "extends": [
