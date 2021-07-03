@@ -1,42 +1,43 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Header } from "./components/Header";
+import { Queue } from "./components/Queue";
+import { AlreadySeen } from "./components/AlreadySeen";
+import { Add } from "./components/Add";
 import Login from "./components/Login";
-import SignUp from "./components/Signup";
-import Search from "./pages/Search";
+import Signup from "./components/Signup"
+import "./App.css";
+import "./lib/font-awesome/css/all.min.css";
+
+// import { GlobalProvider } from "./context/GlobalState";
 
 function App() {
-  return (<Router>
-    <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-        <div className="container">
-          <Link className="navbar-brand" to={"/sign-in"}>Green Stream</Link>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to={"/sign-in"}>Login</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  return (
+    // <GlobalProvider>
+      <Router>
+        <Header />
 
-      <div className="auth-wrapper">
-        <div className="auth-inner">
-          <Switch>
-            <Route exact path='/' component={Login} />
-            <Route path="/sign-in" component={Login} />
-            <Route path="/sign-up" component={SignUp} />
-            <Route exact path="/search" component={Search} />
-
-          </Switch>
-        </div>
-      </div>
-    </div></Router>
+        <Switch>
+          <Route exact path="/">
+            <Queue />
+          </Route>
+          <Route path="/add">
+            <Add />
+          </Route>
+          <Route path="/watched">
+            <AlreadySeen />
+          </Route>
+          <Route exact path = "/login">
+            <Login/>
+          </Route>
+          <Route exact path = "/SignUp">
+            <Signup />
+          </Route>
+        </Switch>
+      </Router>
+    // </GlobalProvider>
   );
 }
 
