@@ -15,6 +15,3 @@ export const Container = ({ movie, type }) => {
     </div>
   );
 };
-
-
-export default Container;
