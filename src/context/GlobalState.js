@@ -3,11 +3,11 @@ import AppReducer from "./AppReducer";
 
 // initial state
 const initialState = {
-  Queue: localStorage.getItem("Queue")
-    ? JSON.parse(localStorage.getItem("Queue"))
+  queue: localStorage.getItem("queue")
+    ? JSON.parse(localStorage.getItem("queue"))
     : [],
-  AlreadySeen: localStorage.getItem("AlreadySeen")
-    ? JSON.parse(localStorage.getItem("AlreadySeen"))
+  watched: localStorage.getItem("watched")
+    ? JSON.parse(localStorage.getItem("watched"))
     : [],
 };
 
@@ -19,12 +19,12 @@ export const GlobalProvider = (props) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   useEffect(() => {
-    localStorage.setItem("queue", JSON.stringify(state.Queue));
-    localStorage.setItem("alreadySeen", JSON.stringify(state.AlreadySeen));
+    localStorage.setItem("queue", JSON.stringify(state.queue));
+    localStorage.setItem("watched", JSON.stringify(state.watched));
   }, [state]);
 
   // actions
-  const addMovieToQueue = (movie) => {
+  const addMovieToQueue= (movie) => {
     dispatch({ type: "ADD_MOVIE_TO_QUEUE", payload: movie });
   };
 
@@ -32,31 +32,31 @@ export const GlobalProvider = (props) => {
     dispatch({ type: "REMOVE_MOVIE_FROM_QUEUE", payload: id });
   };
 
-  const addMovieToAlreadySeen = (movie) => {
-    dispatch({ type: "ADD_MOVIE_TO_ALREADYSEEN", payload: movie });
+  const addMovieToWatched = (movie) => {
+    dispatch({ type: "ADD_MOVIE_TO_WATCHED", payload: movie });
   };
 
   const moveToQueue = (movie) => {
     dispatch({ type: "MOVE_TO_QUEUE", payload: movie });
   };
 
-  const removeFromAlreadySeen = (id) => {
-    dispatch({ type: "REMOVE_FROM_ALREADYSEEN", payload: id });
+  const removeFromWatched = (id) => {
+    dispatch({ type: "REMOVE_FROM_WATCHED", payload: id });
   };
 
   return (
     <GlobalContext.Provider
       value={{
-        Queue: state.Queue,
-        AlreadySeen: state.AlreadySeen,
+        queue: state.queue,
+        watched: state.watched,
         addMovieToQueue,
         removeMovieFromQueue,
-        addMovieToAlreadySeen,
+        addMovieToWatched,
         moveToQueue,
-        removeFromAlreadySeen,
+        removeFromWatched,
       }}
     >
       {props.children}
     </GlobalContext.Provider>
   );
-};
+    };

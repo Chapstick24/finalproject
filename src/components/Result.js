@@ -2,18 +2,18 @@ import React, { useContext } from "react";
 import Moment from "react-moment";
 import { GlobalContext } from "../context/GlobalState";
 
-export const SearchResult = ({ movie }) => {
+export const Result = ({ movie }) => {
   const {
     addMovieToQueue,
     addMovieToWatched,
-    Queue,
-    AlreadySeen,
+    queue,
+    watched,
   } = useContext(GlobalContext);
 
-  let storedMovie = Queue.find((o) => o.id === movie.id);
-  let storedMovieWatched = AlreadySeen.find((o) => o.id === movie.id);
+  let storedMovie = queue.find((o) => o.id === movie.id);
+  let storedMovieWatched = watched.find((o) => o.id === movie.id);
 
-  const QueueDisabled = storedMovie
+  const queueDisabled = storedMovie
     ? true
     : storedMovieWatched
     ? true
@@ -45,10 +45,10 @@ export const SearchResult = ({ movie }) => {
         <div className="controls">
           <button
             className="btn"
-            disabled={QueueDisabled}
+            disabled={queueDisabled}
             onClick={() => addMovieToQueue(movie)}
           >
-            Add to Queue
+            My Queue
           </button>
 
           <button
