@@ -12,7 +12,7 @@ export const Header = () => {
 
           <ul className="nav-links">
             <li>
-              <Link to="/">Queue</Link>
+              <Link to="/">My Queue</Link>
             </li>
 
             <li>
@@ -20,9 +20,12 @@ export const Header = () => {
             </li>
 
             <li>
-              <Link to="/add" className="btn btn-main"> + Add  </Link>
-
+              <Link to="/add" className="btn btn-main"> Add to Queue  </Link>
+              </li>
+              <li>
               <Link to="/signup"> Sign up </Link>
+              </li>
+              <li>
 
               <Link to="/login"> Login </Link>
             </li>
