@@ -36,7 +36,7 @@ export const Button = ({ type, movie }) => {
             className="ctrl-btn"
             onClick={() => removeFromWatched(movie.id)}
           >
-            <i className="fa-fw fa fa-times"></i>
+            <i className="fa-fw fa fa-times-circle"></i>
           </button>
         </>
       )}
