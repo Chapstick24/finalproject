@@ -1,32 +1,38 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+// const emailValidator = require('email-validator');
+// const bcrypt = require('bcrypt');
+const SALT_ROUNDS = 12;
+
 
 const userSchema = new Schema({
     firstName: {
         type: String,
         trim: true,
-        required: 'Enter your first name'
+        required: true
     },
 
     lastName: {
         type: String,
         trim: true,
-        required: 'Enter your last name'
+        required: true
     },
 
     email: {
         type: String,
         unique: true,
-        required: 'Please enter your email address for you account',
-        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+        required: true,
+        lowercase: true,
+        
     },
 
     password: {
         type: String,
-        required: 'Please enter a password for your account',
-        validate: [({length}) => length >= 8, "Make sure password is at least 8 characters"]
-
-    },
+        required: true,
+        trim: true,
+        minlength: 8
+        
+    }
 
 });
 

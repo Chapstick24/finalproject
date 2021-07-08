@@ -1,10 +1,27 @@
 import React, { Component } from "react";
+// import API from "../utils/api"
 
 export default class SignUp extends Component {
+
+    state = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+    }
+
+    handleInputChange = event => {
+        // Get value and name of the input
+    const { name, value } = event.target;
+    // Update states with current input(s)
+    this.setState({
+        [name]: value 
+     })
+    }
     render() {
         return (
             <form>
-                <h3>Sign Up</h3>
+                <h3>Hello!! Please Sign Up</h3>
 
                 <div className="form-group">
                     <label>First name</label>
