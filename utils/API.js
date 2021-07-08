@@ -1,4 +1,8 @@
 const router = require('express').Router();
 import axios from 'axios';
 
-//Watchmode API key 
+export default {
+    saveUser: function(userData) {
+      return axios.post('/api/users', userData);
+    },
+  };
