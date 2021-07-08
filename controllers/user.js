@@ -1,4 +1,7 @@
+
+
 const db = require("../models");
+
 
 module.exports = {
     addNewUser: function(req, res) {
