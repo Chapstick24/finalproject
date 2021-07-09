@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"node server.js\" \"cd client && npm run start\""
-    },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rhineyman/finalproject.git"
@@ -23,6 +23,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
+    "concurrently": "^6.2.0",
     "moment": "^2.29.1",
     "mongodb": "^3.6.9",
     "mongoose": "^5.12.15",
